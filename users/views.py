@@ -21,6 +21,8 @@ class UserUpdateAPIView(generics.UpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+
 class UserDeleteAPIView(generics.DestroyAPIView):
     """Представление для удаления 1 пользователя"""
     queryset = User.objects.all()
+
