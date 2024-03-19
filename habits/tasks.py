@@ -4,6 +4,7 @@ from habits.services import time_next_notify_prep, send_alarm_to_telegramm
 from users.models import User
 from django.utils import timezone
 
+
 @shared_task
 def send_alarm():
     """функция готовит напоминания и отправляет уведомления о необходимости выполнить привычку"""

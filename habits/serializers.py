@@ -4,6 +4,7 @@ from habits.models import Habit
 from habits.validators import Execution_time_Validator, OnlyOneFieldValidator, Habit_is_related_validator, \
     Habit_is_nice_validator
 
+
 class HabitSerializer(serializers.ModelSerializer):
     """Сериализатор для Привычки"""
     period = serializers.IntegerField(validators=[MaxValueValidator(168)])
@@ -17,4 +18,4 @@ class HabitSerializer(serializers.ModelSerializer):
             Habit_is_nice_validator(),
             OnlyOneFieldValidator(),
             Habit_is_related_validator(field='related_habit'),
-            ]
+        ]

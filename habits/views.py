@@ -4,7 +4,6 @@ from habits.models import Habit
 from habits.paginators import HabitsPaginator
 from habits.serializers import HabitSerializer
 
-
 class HabitCreateAPIView(generics.CreateAPIView):
     """Представление для создания привычки"""
     serializer_class = HabitSerializer
@@ -15,11 +14,12 @@ class HabitCreateAPIView(generics.CreateAPIView):
         """Переопределение метода "создание": сохраняем пользователя в БД"""
         new_habit = serializer.save(user=self.request.user)
         new_habit.save()
+
+
 class HabitListAPIView(generics.ListAPIView):
     """Представление для просмотра всех привычек"""
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
-    pagination_class = HabitsPaginator
 
     def get_queryset(self):
         user = self.request.user

@@ -33,24 +33,27 @@ class HabitCRUDTest(APITestCase):
 
         self.assertEqual(
             response.json(),
-            {"count": 1,
-                    "next": None,
-                    "previous": None,
-                    "results": [
-                           {"id": self.habit.id,
-                            "period": 1,
-                            "place": "Test place",
-                            "action": "Test action",
-                            "time": "2024-03-17T10:52:50.515434Z",
-                            "is_nice": False,
-                            "award": None,
-                            "execution_time": "00:01:00",
-                            "is_public": False,
-                            "user": self.user.id,
-                            "related_habit": None},
-                    ]
-                }
-            )
+            {
+                "count": 1,
+                "next": None,
+                "previous": None,
+                "results": [
+                    {
+                        "id": self.habit.id,
+                        "period": 1,
+                        "place": "Test place",
+                        "action": "Test action",
+                        "time": "2024-03-17T10:52:50.515434Z",
+                        "is_nice": False,
+                        "award": None,
+                        "execution_time": "00:01:00",
+                        "is_public": False,
+                        "user": self.user.id,
+                        "related_habit": None
+                    },
+                ]
+            }
+        )
 
     def test_create(self):
         """Тест создания привычки"""

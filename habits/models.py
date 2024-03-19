@@ -1,10 +1,9 @@
 from django.db import models
 from conf_my import NULLABLE
 from config.settings import AUTH_USER_MODEL
-from users.models import User
 from django.utils import timezone
 
-# Create your models here.
+
 class Habit(models.Model):
 
     user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='пользователь', **NULLABLE)
@@ -17,3 +16,10 @@ class Habit(models.Model):
     award = models.CharField(max_length=200, verbose_name='вознаграждение', **NULLABLE)
     execution_time = models.TimeField(verbose_name='время на выполнение')
     is_public = models.BooleanField(default=False, verbose_name='публичная приычка')
+
+    def __str__(self):
+        return f'{self.action} {self.time} {self.period}'
+
+    class Meta:
+        verbose_name = "привычка"
+        verbose_name_plural = "привычки"

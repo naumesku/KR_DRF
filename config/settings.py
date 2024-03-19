@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_celery_beat',
 
+    'corsheaders',
     'users',
     'habits',
 ]
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -160,3 +162,12 @@ CELERY_BEAT_SCHEDULE = {
 
 TELEGRAM_API_TOKEN = os.getenv('TELEGRAM_API_TOKEN')
 URL = os.getenv('URL')
+
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
